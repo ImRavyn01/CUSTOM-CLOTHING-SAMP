@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**Version 1.0.0** | SA-MP 0.3.7 R2 | GTA SA 1.0 US
+**Version 0.0.1 (First Release)** | SA-MP 0.3.7 R2 | GTA SA 1.0 US
 
 Sistem clothing CJ modular untuk SA-MP — memungkinkan server mengubah pakaian individual CJ (torso, celana, sepatu, topi, dll) secara per-bagian, tersinkronisasi ke semua player.
 

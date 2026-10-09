@@ -69,7 +69,7 @@ public OnFilterScriptInit()
 {
     print("============================================");
     print(" Custom CJ Clothing — Test Filterscript");
-    print(" Version: 1.0.0");
+    print(" Version: 0.0.1 (First Release)");
     print("============================================");
 
     // Check plugin version
