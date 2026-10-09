@@ -61,6 +61,12 @@
 #define CUSTOM_JEANS_1      30002
 #define CUSTOM_SNEAKER_1    30003
 
+// Modular Female Base Models
+#define MODEL_FEM_TORSO     30100
+#define MODEL_FEM_LEGS      30101
+#define MODEL_FEM_SHOES     30102
+#define MODEL_FEM_HEAD      30103
+
 // ============================================================================
 //  GAMEMODE CALLBACKS
 // ============================================================================
@@ -77,12 +83,11 @@ public OnFilterScriptInit()
     GetClothingPluginVersion(version, sizeof(version));
     printf(" Plugin Version: %s", version);
 
-    // Register custom clothing models (place .dff/.txd in server models/clothing/)
-    // Uncomment these when you have actual custom model files:
-    //
-    // AddClothingModel(0, CUSTOM_TSHIRT_1, "custom_tshirt1.dff", "custom_tshirt1.txd");
-    // AddClothingModel(0, CUSTOM_JEANS_1,  "custom_jeans1.dff",  "custom_jeans1.txd");
-    // AddClothingModel(0, CUSTOM_SNEAKER_1,"custom_sneaker1.dff","custom_sneaker1.txd");
+    // Register custom female clothing models
+    AddClothingModel(0, MODEL_FEM_TORSO, "fem_torso.dff", "fem_torso.txd");
+    AddClothingModel(0, MODEL_FEM_LEGS,  "fem_legs.dff",  "fem_legs.txd");
+    AddClothingModel(0, MODEL_FEM_SHOES, "fem_shoes.dff", "fem_shoes.txd");
+    AddClothingModel(0, MODEL_FEM_HEAD,  "fem_head.dff",  "fem_head.txd");
 
     print(" Clothing system initialized!");
     print("============================================");
@@ -136,6 +141,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
     if (!strcmp(cmdtext, "/clothing", true, 9) && (cmdtext[9] == '\0' || cmdtext[9] == ' '))
     {
         SendClientMessage(playerid, COLOR_ORANGE, "=== Custom CJ Clothing Commands ===");
+        SendClientMessage(playerid, COLOR_CYAN,  "/female        — Ubah ke Karakter Wanita Modular");
+        SendClientMessage(playerid, COLOR_CYAN,  "/male          — Kembali ke Karakter Pria (CJ)");
         SendClientMessage(playerid, COLOR_WHITE, "/outfit [1-3]  — Pilih preset outfit");
         SendClientMessage(playerid, COLOR_WHITE, "/settorso [tex] [mdl]  — Set baju torso");
         SendClientMessage(playerid, COLOR_WHITE, "/setlegs [tex] [mdl]   — Set celana");
@@ -146,6 +153,32 @@ public OnPlayerCommandText(playerid, cmdtext[])
         SendClientMessage(playerid, COLOR_WHITE, "/removeall             — Hapus semua baju");
         SendClientMessage(playerid, COLOR_WHITE, "/myclothes             — Lihat baju yang dipakai");
         SendClientMessage(playerid, COLOR_WHITE, "/clothesinfo           — Info slot names");
+        return 1;
+    }
+
+    // ---- /female /femaleskin ----
+    if (!strcmp(cmdtext, "/female", true) || !strcmp(cmdtext, "/femaleskin", true))
+    {
+        if (!IsPlayerCJSkin(playerid))
+        {
+            SendClientMessage(playerid, COLOR_RED, "[ERROR] Clothing hanya bekerja pada skin CJ (ID 0)!");
+            return 1;
+        }
+
+        SetPlayerCustomClothes(playerid, CLOTHING_TORSO, MODEL_FEM_TORSO);
+        SetPlayerCustomClothes(playerid, CLOTHING_LEGS,  MODEL_FEM_LEGS);
+        SetPlayerCustomClothes(playerid, CLOTHING_SHOES, MODEL_FEM_SHOES);
+        SetPlayerCustomClothes(playerid, CLOTHING_HEAD,  MODEL_FEM_HEAD);
+
+        SendClientMessage(playerid, COLOR_GREEN, "[Clothing] Anda berubah menjadi karakter wanita modular!");
+        return 1;
+    }
+
+    // ---- /male /maleskin ----
+    if (!strcmp(cmdtext, "/male", true) || !strcmp(cmdtext, "/maleskin", true))
+    {
+        RemoveAllPlayerClothes(playerid);
+        SendClientMessage(playerid, COLOR_GREEN, "[Clothing] Anda kembali ke karakter pria (CJ)!");
         return 1;
     }
 
