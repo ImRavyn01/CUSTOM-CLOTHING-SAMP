@@ -165,10 +165,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
             return 1;
         }
 
-        SetPlayerCustomClothes(playerid, CLOTHING_TORSO, MODEL_FEM_TORSO);
-        SetPlayerCustomClothes(playerid, CLOTHING_LEGS,  MODEL_FEM_LEGS);
-        SetPlayerCustomClothes(playerid, CLOTHING_SHOES, MODEL_FEM_SHOES);
-        SetPlayerCustomClothes(playerid, CLOTHING_HEAD,  MODEL_FEM_HEAD);
+        SetPlayerClothes(playerid, CLOTHING_TORSO, "fem_torso", "fem_torso");
+        SetPlayerClothes(playerid, CLOTHING_LEGS,  "fem_legs",  "fem_legs");
+        SetPlayerClothes(playerid, CLOTHING_SHOES, "fem_shoes", "fem_shoes");
+        SetPlayerClothes(playerid, CLOTHING_HEAD,  "fem_head",  "fem_head");
 
         SendClientMessage(playerid, COLOR_GREEN, "[Clothing] Anda berubah menjadi karakter wanita modular!");
         return 1;
