@@ -1,0 +1,49 @@
+# ==============================================================================
+# Custom CJ Clothing SA-MP Plugin - .gitignore
+# ==============================================================================
+
+# Build directories
+build/
+bin/
+obj/
+output/
+cmake-build-*/
+out/
+
+# Visual Studio files & directories
+.vs/
+*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.sln.ide
+*.vcxproj.user
+
+# Compiled object and intermediate files
+*.obj
+*.o
+*.tlog
+*.idb
+*.pdb
+*.ilk
+*.exp
+*.res
+*.pch
+*.ipch
+
+# Compiled library & binaries (release outputs should be in releases, not tracked in git root)
+# Uncomment if you want to track pre-compiled binaries in specific folder
+# *.dll
+# *.so
+# *.asi
+
+# Temporary and log files
+*.log
+*.tmp
+temp.*
+temp_*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
