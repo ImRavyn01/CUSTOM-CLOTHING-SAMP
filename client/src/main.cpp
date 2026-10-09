@@ -22,6 +22,9 @@ DWORD WINAPI InitThread(LPVOID lpParam)
     LogDebug(" SA-MP 0.3.7 R2 | GTA SA 1.0 US");
     LogDebug("==============================================");
 
+    // Install engine crash-prevention hooks immediately on startup
+    InstallEngineHooks();
+
     LogDebug("[Init] Waiting for samp.dll to load...");
     HMODULE sampMod = nullptr;
     DWORD startTime = GetTickCount();

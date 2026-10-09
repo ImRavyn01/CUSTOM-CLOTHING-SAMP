@@ -9,6 +9,9 @@
 #include <windows.h>
 #include <cstdint>
 
+// Install GTA SA engine crash-prevention hooks immediately on startup
+void InstallEngineHooks();
+
 // Install all hooks (pattern scan samp.dll, resolve pointers)
 void InstallHooks();
 
